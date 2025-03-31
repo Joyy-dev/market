@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Market',
       theme: ThemeData(
-        primaryColor: Color(0xFF040273)
+        primaryColor: Color(0xFF040273),
+        splashColor: Color(0xFF1B1B3A)
       ),
       home: HomePageScreens(),
     );

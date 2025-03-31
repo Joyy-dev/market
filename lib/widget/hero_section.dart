@@ -21,7 +21,11 @@ class HeroSection extends StatelessWidget {
             ),
           ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 10),
+          padding: const EdgeInsets.only(
+            top: 70,
+            left: 10,
+            right: 10
+          ),
           child: Column(
             children: [
               Row(

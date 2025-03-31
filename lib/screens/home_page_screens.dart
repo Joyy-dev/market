@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market/widget/category_section.dart';
 import 'package:market/widget/hero_section.dart';
 
 class HomePageScreens extends StatelessWidget {
@@ -6,6 +7,7 @@ class HomePageScreens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //final double screenHeight = MediaQuery.of(context).size.height;
     //final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: Row(
@@ -17,12 +19,38 @@ class HomePageScreens extends StatelessWidget {
           IconButton(onPressed: () {}, icon: Icon(Icons.person_2_outlined))
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          HeroSection(),  
-          Container()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HeroSection(),
+            CategorySection(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Today\'s recommendation...',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.grey
+                ), textAlign: TextAlign.start,
+              ),
+            ),
+            GridView.builder(
+              shrinkWrap: true,
+              itemCount: 6,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 3/4
+              ), 
+              itemBuilder: (context, index) {
+                return;
+              },
+            )
+          ],
+        ),
       ),
     );
   }
