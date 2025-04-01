@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:market/widget/category_section.dart';
 import 'package:market/widget/hero_section.dart';
+import 'package:market/widget/product_items.dart';
 
 class HomePageScreens extends StatelessWidget {
   const HomePageScreens({super.key});
@@ -27,7 +28,11 @@ class HomePageScreens extends StatelessWidget {
             HeroSection(),
             CategorySection(),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(
+                left: 8,
+                right: 8,
+                top: 8,
+              ),
               child: Text(
                 'Today\'s recommendation...',
                 style: TextStyle(
@@ -36,19 +41,8 @@ class HomePageScreens extends StatelessWidget {
                 ), textAlign: TextAlign.start,
               ),
             ),
-            GridView.builder(
-              shrinkWrap: true,
-              itemCount: 6,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 3/4
-              ), 
-              itemBuilder: (context, index) {
-                return;
-              },
-            )
+            ProductItems()
+            
           ],
         ),
       ),
