@@ -67,6 +67,8 @@ flutter:
   - assets/images/market.png
   - assets/images/circle.png
   - assets/images/design.png
+  - assets/images/girl.jpg
+  - assets/images/profile.png
   - assets/images/shoe.png
   - assets/images/background.png
   - assets/lottie/shopping.json

@@ -9,27 +9,65 @@ class ProductItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
     final product = productsData.getProducts();
-    return SingleChildScrollView(
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 10,
+        right: 10,
+      ),
       child: GridView.builder(
         shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         itemCount: product.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          childAspectRatio: 3/4
+          crossAxisSpacing: 15,
+          childAspectRatio: 3 / 4
         ), 
         itemBuilder: (context, index) {
           final products = product[index];
-          return Card(
+          return GridTile(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    products.imageUrl, 
-                    fit: BoxFit.cover, 
-                  )
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                          products.imageUrl, 
+                          fit: BoxFit.cover,
+                          height: 200,
+                          width: double.infinity,
+                        )
+                      ),
+                      Positioned(
+                        top: 5,
+                        left: 5,
+                        child: Container(
+                          alignment: Alignment.topLeft,
+                          width: 70,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(9),
+                            color: Theme.of(context).splashColor
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.star, color: Colors.yellow, size: 17),
+                              SizedBox(width: 5,),
+                              Text(products.rating.toString(),
+                              style: TextStyle(color: Colors.yellow, fontSize: 16),),
+                            ],
+                          ),
+                        ),
+                      )
+                    ]
+                  ),
                 ),
                 Text(
                   products.title, 
@@ -37,13 +75,15 @@ class ProductItems extends StatelessWidget {
                     fontSize: 16
                   ),
                 ),
-                Text(
-                  '\$${products.price}',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold
-                  )
+                Expanded(
+                  child: Text(
+                    '\$${products.price}',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold
+                    ), textAlign: TextAlign.start,
+                  ),
                 )
               ],
             )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market/screens/profile_screens.dart';
 import 'package:market/widget/category_section.dart';
 import 'package:market/widget/hero_section.dart';
 import 'package:market/widget/product_items.dart';
@@ -14,10 +15,25 @@ class HomePageScreens extends StatelessWidget {
       bottomNavigationBar: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.home)),
+          IconButton(onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => const HomePageScreens()
+              )
+            );
+          }, icon: Icon(Icons.home)),
           IconButton(onPressed: () {}, icon: Icon(Icons.grid_view_outlined)),
           IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none_outlined)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.person_2_outlined))
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => ProfileScreens()
+                )
+              );
+            }, 
+            icon: Icon(Icons.person_2_outlined)
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -48,4 +64,4 @@ class HomePageScreens extends StatelessWidget {
       ),
     );
   }
-}
+} 
