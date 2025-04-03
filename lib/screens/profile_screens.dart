@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/screens/home_page_screens.dart';
+import 'package:market/screens/notifications_screens.dart';
 import 'package:market/widget/search.dart';
 
 class ProfileScreens extends StatelessWidget {
@@ -21,8 +22,18 @@ class ProfileScreens extends StatelessWidget {
             }, 
             icon: Icon(Icons.home_outlined)),
           IconButton(onPressed: () {}, icon: Icon(Icons.grid_view_outlined)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none_outlined)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.person))
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NotificationsScreens()));
+            }, 
+            icon: Icon(Icons.notifications_none_outlined)
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfileScreens()));
+            }, 
+            icon: Icon(Icons.person)
+          )
         ],
       ),
       body: SingleChildScrollView(
