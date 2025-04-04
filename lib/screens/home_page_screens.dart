@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market/screens/feeds_screen.dart';
 import 'package:market/screens/notifications_screens.dart';
 import 'package:market/screens/profile_screens.dart';
 import 'package:market/widget/category_section.dart';
@@ -23,7 +24,12 @@ class HomePageScreens extends StatelessWidget {
               )
             );
           }, icon: Icon(Icons.home)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.grid_view_outlined)),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => FeedsScreen()));
+            }, 
+            icon: Icon(Icons.grid_view_outlined)
+          ),
           IconButton(
             onPressed: () {
               Navigator.of(context).pushReplacement(
