@@ -4,8 +4,15 @@ import 'package:market/screens/notifications_screens.dart';
 import 'package:market/screens/profile_screens.dart';
 import 'package:market/widget/search.dart';
 
-class FeedsScreen extends StatelessWidget {
+class FeedsScreen extends StatefulWidget {
   const FeedsScreen({super.key});
+
+  @override
+  State<FeedsScreen> createState() => _FeedsScreenState();
+}
+
+class _FeedsScreenState extends State<FeedsScreen> {
+  bool showUpdate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,30 +62,75 @@ class FeedsScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Container(
-        height: 50,
-        decoration: BoxDecoration(
-          color: Theme.of(context).splashColor
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              'Update',
-              style: TextStyle(
-                fontSize: 20, 
-                color: Colors.white
-              ),
+      body: Column(
+        children: [
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+              color: Theme.of(context).splashColor
             ),
-            Text(
-              'Explore',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.grey,
-              ),
-            )
-          ],
-        ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      showUpdate = false;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Update',
+                        style: TextStyle(
+                          fontSize: 20, 
+                          color: showUpdate ? Colors.grey : Colors.white
+                        ),
+                      ),
+                      AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
+                        margin: EdgeInsets.only(top: 4),
+                        height: 3,
+                        width: showUpdate ? 0 : 100,
+                        color: Colors.amber,
+                      ),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      showUpdate = true;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Explore',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: showUpdate ? Colors.white : Colors.grey,
+                        ),
+                      ),
+                      AnimatedContainer(
+                        duration: Duration(microseconds: 300),
+                        margin: EdgeInsets.only(top: 4),
+                        height: 3,
+                        width: showUpdate ? 100 : 0,
+                        color: Colors.amber,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ), 
+          ),
+         /* Expanded(
+            child: showUpdate ? UpdateScreen() : ExploreScreen(),
+          )*/
+        ],
       ),
     );
   }
