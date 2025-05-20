@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:market/screens/home_page_screens.dart';
 import 'package:market/screens/notifications_screens.dart';
 import 'package:market/screens/profile_screens.dart';
+import 'package:market/widget/feeds_explore.dart';
+import 'package:market/widget/feeds_update.dart';
 import 'package:market/widget/search.dart';
 
 class FeedsScreen extends StatefulWidget {
@@ -127,9 +129,9 @@ class _FeedsScreenState extends State<FeedsScreen> {
               ],
             ), 
           ),
-         /* Expanded(
-            child: showUpdate ? UpdateScreen() : ExploreScreen(),
-          )*/
+          Expanded(
+            child: showUpdate ? FeedsExplore() : FeedsUpdate()
+          )
         ],
       ),
     );
