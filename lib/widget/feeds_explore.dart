@@ -10,16 +10,20 @@ class FeedsExplore extends StatelessWidget {
     final feedData = Provider.of<Products>(context);
     final explore = feedData.getProducts();
     return GridView.builder(
+      itemCount: explore.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         mainAxisSpacing: 10,
-        childAspectRatio: 3/4
+        childAspectRatio: 3 / 4,
+        crossAxisSpacing: 10
 
       ), 
       itemBuilder: (context, index) {
         final exploreFeed = explore[index];
-        return GridTile(
-          child: Image.network(exploreFeed.imageUrl)
+        return Container(
+          child: GridTile(
+            child: Image.network(exploreFeed.imageUrl)
+          ),
         );
       },
     );
