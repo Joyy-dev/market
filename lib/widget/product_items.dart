@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/providers/products.dart';
+import 'package:market/screens/product_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProductItems extends StatelessWidget {
@@ -69,10 +70,15 @@ class ProductItems extends StatelessWidget {
                     ]
                   ),
                 ),
-                Text(
-                  products.title, 
-                  style: TextStyle(
-                    fontSize: 16
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => ProductDetailScreen(brand: products.brandName,)));
+                  },
+                  child: Text(
+                    products.title, 
+                    style: TextStyle(
+                      fontSize: 16
+                    ),
                   ),
                 ),
                 Expanded(
