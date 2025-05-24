@@ -38,11 +38,24 @@ class ProductItems extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          products.imageUrl, 
-                          fit: BoxFit.cover,
-                          height: 200,
-                          width: double.infinity,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (ctx) => ProductDetailScreen(
+                                  brand: products.brandName,
+                                  imageUrl: products.imageUrl,
+                                  price: products.price,
+                                )
+                              )
+                            );
+                          },
+                          child: Image.network(
+                            products.imageUrl, 
+                            fit: BoxFit.cover,
+                            height: 200,
+                            width: double.infinity,
+                          ),
                         )
                       ),
                       Positioned(
@@ -72,7 +85,15 @@ class ProductItems extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => ProductDetailScreen(brand: products.brandName,)));
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => ProductDetailScreen(
+                          brand: products.brandName,
+                          imageUrl: products.imageUrl,
+                          price: products.price,
+                        )
+                      )
+                    );
                   },
                   child: Text(
                     products.title, 
