@@ -52,31 +52,33 @@ class HomePageScreens extends StatelessWidget {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HeroSection(),
-            CategorySection(),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8,
-                right: 8,
-                top: 8,
-              ),
-              child: Text(
-                'Today\'s recommendation...',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey
-                ), textAlign: TextAlign.start,
-              ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HeroSection(),
+          CategorySection(),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 8,
+              right: 8,
+              top: 10,
             ),
-            ProductItems()
-            
-          ],
-        ),
+            child: Text(
+              'Today\'s recommendation...',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.grey
+              ), textAlign: TextAlign.start,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height: 200,
+              child: ProductItems()
+            ),
+          )
+          
+        ],
       ),
     );
   }

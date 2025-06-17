@@ -16,24 +16,23 @@ class ProductItems extends StatelessWidget {
         right: 10,
       ),
       child: GridView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        //shrinkWrap: true,
+        //physics: NeverScrollableScrollPhysics(),
         itemCount: product.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 15,
-          childAspectRatio: 3 / 4
+          childAspectRatio: 3 / 4.5
         ), 
         itemBuilder: (context, index) {
           final products = product[index];
           return GridTile(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                AspectRatio(
-                  aspectRatio: 1,
+                SizedBox(
+                  height: 200,
                   child: Stack(
                     children: [
                       ClipRRect(
@@ -43,9 +42,12 @@ class ProductItems extends StatelessWidget {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (ctx) => ProductDetailScreen(
+                                  title: products.title,
+                                  rating: products.rating,
                                   brand: products.brandName,
                                   imageUrl: products.imageUrl,
                                   price: products.price,
+                                  
                                 )
                               )
                             );
@@ -88,6 +90,8 @@ class ProductItems extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (ctx) => ProductDetailScreen(
+                          title: products.title,
+                          rating: products.rating,
                           brand: products.brandName,
                           imageUrl: products.imageUrl,
                           price: products.price,

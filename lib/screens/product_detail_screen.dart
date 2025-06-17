@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ProductDetailScreen extends StatelessWidget {
+  final String title;
+  final double rating;
   final String brand;
   final String imageUrl;
   final double price;
   
   const ProductDetailScreen({
+    required this.title,
+    required this.rating,
     required this.brand, 
     required this.imageUrl, 
     required this.price,
@@ -87,9 +91,61 @@ class ProductDetailScreen extends StatelessWidget {
 
       body: Column(
         children: [
-          Image.network(imageUrl),
-          Row(),
-          //Text(price)
+          Container(
+            height: 470,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(imageUrl), fit: BoxFit.cover
+              )
+            ),
+          ),
+          SizedBox(height: 9,),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Theme.of(context).splashColor,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+                Container(
+                  width: 60,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).splashColor,
+                    borderRadius: BorderRadius.circular(9), 
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.yellow,),
+                      SizedBox(width: 5,),
+                      Text(
+                        rating.toString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Text(
+            "\$${price.toStringAsFixed(2)}",
+            style: TextStyle(
+              fontSize: 18,
+              color: Theme.of(context).splashColor,
+              fontWeight: FontWeight.bold,
+            ),
+          )
         ],
       )
     );
