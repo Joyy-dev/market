@@ -43,11 +43,12 @@ class ProductItems extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (ctx) => ProductDetailScreen(
                                   title: products.title,
+                                  description: products.description,
                                   rating: products.rating,
                                   brand: products.brandName,
                                   imageUrl: products.imageUrl,
                                   price: products.price,
-                                  
+                                  color: products.color,
                                 )
                               )
                             );
@@ -64,8 +65,7 @@ class ProductItems extends StatelessWidget {
                         top: 5,
                         left: 5,
                         child: Container(
-                          alignment: Alignment.topLeft,
-                          width: 70,
+                          width: 60,
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(9),
@@ -77,7 +77,7 @@ class ProductItems extends StatelessWidget {
                               Icon(Icons.star, color: Colors.yellow, size: 17),
                               SizedBox(width: 5,),
                               Text(products.rating.toString(),
-                              style: TextStyle(color: Colors.yellow, fontSize: 16),),
+                              style: TextStyle(color: Colors.yellow, fontSize: 13),),
                             ],
                           ),
                         ),
@@ -91,10 +91,12 @@ class ProductItems extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (ctx) => ProductDetailScreen(
                           title: products.title,
+                          description: products.description,
                           rating: products.rating,
                           brand: products.brandName,
                           imageUrl: products.imageUrl,
                           price: products.price,
+                          color: products.color,
                         )
                       )
                     );
