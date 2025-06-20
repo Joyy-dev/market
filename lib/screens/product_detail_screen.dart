@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/model/color_swatches.dart';
+import 'package:market/model/size_swatches.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String title;
@@ -9,6 +10,7 @@ class ProductDetailScreen extends StatefulWidget {
   final String imageUrl;
   final double price;
   final List<Color> color;
+  final List<String> size;
 
   
   const ProductDetailScreen({
@@ -19,6 +21,7 @@ class ProductDetailScreen extends StatefulWidget {
     required this.imageUrl, 
     required this.price,
     required this.color,
+    required this.size,
     super.key
   });
 
@@ -28,6 +31,7 @@ class ProductDetailScreen extends StatefulWidget {
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   int selectedColorIndex = 0;
+  int selectedSizeIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -193,6 +197,42 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     selectedColorIndex = index;
                   });
                 }
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+              child: Text(
+                'Size',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).splashColor
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizeSwatches(
+                size: widget.size, 
+                selectedIndex: selectedSizeIndex, 
+                onchanged: (index) {
+                  setState(() {
+                    selectedSizeIndex = index;
+                  });
+                }
+              ),
+            ),
+            SizedBox(height: 5,),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                'Reviews',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Theme.of(context).splashColor,
+                  fontWeight: FontWeight.bold
+                ),
               ),
             )
           ],

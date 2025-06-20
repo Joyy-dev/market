@@ -49,6 +49,7 @@ class ProductItems extends StatelessWidget {
                                   imageUrl: products.imageUrl,
                                   price: products.price,
                                   color: products.color,
+                                  size: products.sizes,
                                 )
                               )
                             );
@@ -97,6 +98,7 @@ class ProductItems extends StatelessWidget {
                           imageUrl: products.imageUrl,
                           price: products.price,
                           color: products.color,
+                          size: products.sizes,
                         )
                       )
                     );
